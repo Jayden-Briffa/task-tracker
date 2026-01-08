@@ -1,5 +1,5 @@
 class Validator:
-    def isInt(val):
+    def isInt(val) -> bool:
         try:
             int(val)
             return True
@@ -7,5 +7,5 @@ class Validator:
         except ValueError:
             return False
         
-    def isEmpty(val):
+    def isEmpty(val) -> bool:
         return val == ""

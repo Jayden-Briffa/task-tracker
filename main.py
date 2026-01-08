@@ -1,6 +1,6 @@
-from Menu import Menu
-from Tasks_Model import Tasks_Model
-from Validator import Validator
+from core.Menu import Menu
+from core.Tasks_Model import Tasks_Model
+from core.Validator import Validator
 
 MENU_CHOICES = {
     "1": "Add a new task",
@@ -44,7 +44,7 @@ while user_choice != "quit":
                 priority = int(priority)
                 new_task = client.add_task(description, priority)
 
-                print(new_task)
+                print("\nTask successfully created!\n", new_task, sep="")
 
 
         case "2":
