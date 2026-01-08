@@ -11,6 +11,11 @@ MENU_CHOICES = {
 client = Tasks_Model()
 main_menu = Menu(MENU_CHOICES)
 
+client.add_task("kiwi", 3)
+client.add_task("apple", 2)
+client.add_task("orange", 3)
+client.add_task("banana", 1)
+
 user_choice = None
 while user_choice != "quit":
     user_choice = main_menu.get_user_menu_choice()
@@ -37,26 +42,22 @@ while user_choice != "quit":
 
             try:
                 id = int(id)
-                task = client.add_task(description, id)
+                task = client.get_task_by_id(id)
                 print(task)
 
             except ValueError:
                 main_menu.err("Field 'id' must be an integer")
-
-            client.get_task_by_id()
 
         case "4":
             id = input("Enter the task's id: ")
 
             try:
                 id = int(id)
-                task = client.add_task(description, id)
+                task = client.complete_task(id)
                 print(task)
 
             except ValueError:
                 main_menu.err("Field 'id' must be an integer")
-
-            client.complete_task()
 
         case _:
             main_menu.err(f"Your choice '{user_choice}' is invalid. You can only choose: '{main_menu.choices}'")
