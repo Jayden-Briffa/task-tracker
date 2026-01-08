@@ -1,0 +1,10 @@
+07/01/2026
+14:30 - 18:30
+    Used git as version control to allow for easy rollbacks
+    Created planning documents:
+        Flowchart (Simplified to show logical flow rather than every line of code)
+        Data dictionaries for Task and Model objects
+    Decided on core data structures
+
+08/01/2026
+9:00 - 
