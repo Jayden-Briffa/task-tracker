@@ -7,6 +7,6 @@
     Decided on core data structures
 
 08/01/2026
-9:00 - 12:00, 13:20 - 
+9:00 - 12:00, 13:20 - 15:00, 16:00 - 
     Created test table
     Created prototype

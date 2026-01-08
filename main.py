@@ -2,28 +2,26 @@ from core.Menu import Menu
 from core.Tasks_Model import Tasks_Model
 from core.Validator import Validator
 
+# Choices are passed dynamically in case other menus are needed in future
 MENU_CHOICES = {
     "1": "Add a new task",
     "2": "Retrieve next task",
     "3": "Retrieve task by ID",
-    "4": "Mark a task as complete"
+    "4": "Mark a task as complete",
+    "quit": "Exit the program (you will lose all your tasks)"
 }
 
 client = Tasks_Model()
 main_menu = Menu(MENU_CHOICES)
 
-client.add_task("kiwi", 3)
-client.add_task("apple", 2)
-client.add_task("orange", 3)
-client.add_task("banana", 1)
-
 user_choice = None
-while user_choice != "quit":
+while True:
     user_choice = main_menu.get_user_menu_choice()
     flag = False
 
     match user_choice:
 
+        # Add a new task
         case "1":
             description = input("Enter a description for the new task: ")
             priority = input("Enter a priority for the new task: ")
@@ -46,7 +44,7 @@ while user_choice != "quit":
 
                 print("\nTask successfully created!\n", new_task, sep="")
 
-
+        # Get next task
         case "2":
             if (client.empty()):
                 main_menu.err("The task queue is empty")
@@ -56,6 +54,7 @@ while user_choice != "quit":
                 next_task = client.get_task_by_priority()
                 print(next_task)
 
+        # Get task by ID
         case "3":
             id = input("Enter the task's id: ")
 
@@ -72,7 +71,7 @@ while user_choice != "quit":
                 task = client.get_task_by_id(id)
                 print(task)
 
-
+        # Mark task as complete
         case "4":
             id = input("Enter the task's id: ")
 
@@ -89,8 +88,9 @@ while user_choice != "quit":
                 task = client.complete_task(id)
                 print(task)
 
+        case "quit":
+            exit()
 
+        # Tell the user what they can enter if they enter an invalid option
         case _:
-            main_menu.err(f"Your choice '{user_choice}' is invalid. You can only choose: '{main_menu.choices}'")
-
-exit()
+            main_menu.err(f"Your choice '{user_choice}' is invalid. You can only choose: '{",".join(main_menu.options)}'")
