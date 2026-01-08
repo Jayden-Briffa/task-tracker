@@ -6,6 +6,9 @@ class Tasks_Model:
         self.current = {}
         self.priority_queue = Priority_Queue()
 
+    def empty(self):
+        return self.priority_queue.empty()
+
     def add_task(self, description: str, priority: int) -> Task:
         new_task = Task(description, priority)
         self.current[new_task.id] = new_task

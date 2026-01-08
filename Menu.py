@@ -8,7 +8,10 @@ class Menu:
                 
     def get_user_menu_choice(self) -> str:
         print("="*Menu.MENU_BUFFER, "What would you like to do?", "="*Menu.MENU_BUFFER)
+        for choice, description in self.menu_choices.items():
+            print(f"{choice}: {description}")
+                  
         return input()
     
     def err(self, msg: str) -> None:
-        return msg
+        print(msg)
